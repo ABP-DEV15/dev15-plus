@@ -1,5 +1,6 @@
 from src.services.luces import cargar_luces
 from src.services.gestion_dispositivos import listar_luces, buscar_luz, agregar_luz, eliminar_luz
+from src.services.gestion_dispositivos import automatizacion_por_horario
 
 luces = cargar_luces()
 def menu():
@@ -9,7 +10,7 @@ def menu():
     print("2. Buscar luz por nombre")
     print("3. Agregar luz")
     print("4. Eliminar luz")
-    print("5. Activar modo ahorro de energia")
+    print("5. Ejecutar automatización por horario")
     print("6. Salir")
 
 while True:
@@ -33,7 +34,9 @@ while True:
 
 
     elif opcion == "5":
-        print("Activando modo ahorro de energia...")
+        automatizacion_por_horario(luces)
+        print("Automatización ejecutada según horario configurado.")
+        
     elif opcion == "6":
         print("Programa finalizado.")
         break

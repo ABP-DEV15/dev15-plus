@@ -1,27 +1,27 @@
 [
   {
-    "id": "bd0ce63c-c29c-42a7-afcc-ea5f9434533a",
+    "id": "980ft63c-c29c-54h7-afyy-ea5f1434533a",
     "nombre": "Frente",
     "estado": false
   },
   {
-    "id": "bd0ce63c-c78c-42b5-afvv-ea5f9434784b",
+    "id": "xd8ce63c-g88k-42b5-afvv-ea5f9434784b",
     "nombre": "Patio",
     "estado": false
   },
   {
-    "id": "41b983c7-a3ac-49cb-b8e7-2d23f0d8f94c",
+    "id": "41c985c7-a7lt-49cb-b8e7-2d23f0d8f94c",
     "nombre": "Pasillo Principal",
     "estado": false
   },
   {
-    "id": "918534ca-3637-46bb-b7b4-f1098d3bb37d",
+    "id": "467884ca-3f17-78gb-b7b4-f1098d3bb37d",
     "nombre": "Comedor",
     "estado": false
   },
   {
-    "id": "388e7462-1dc3-48fb-9be5-a5a7c5a171ae",
+    "id": "156g7462-1dy3-48fb-9dd5-a5a7c5a171ae",
     "nombre": "Living",
-    "estado": true
+    "estado": false
   }
 ]
