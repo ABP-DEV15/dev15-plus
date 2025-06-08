@@ -59,7 +59,7 @@ def main():
         case '1':
             ingreso = inicio_sesion()
             if ingreso[0]:
-                view_main(ingreso[1])
+                view_main(ingreso[1] if ingreso[1] == 'regular' else 'admin')
             else:
                 print(ingreso[1])
                 ingreso = inicio_sesion()
@@ -70,4 +70,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
