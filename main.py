@@ -1,5 +1,9 @@
 from datausers import *
 from luces import *
+user = {}
+
+user['usuario'] = data
+modificar_usuario(user)
 
 def inicio_sesion():
     data = {}
