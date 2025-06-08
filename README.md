@@ -5,14 +5,17 @@ Permite listar, buscar, agregar y eliminar luces, además de activar un modo de 
 
 ## 🗂️ Estructura del Proyecto
 
-dev15-plus/  
-├── main.py # Programa principal  
-└── src/  
-&nbsp;├── data/  
-&nbsp;&nbsp;│   └── luces.json # JSON que actúa como base de datos  
-&nbsp;└── services/  
-&nbsp;&nbsp;├── luces.py # Funciones para cargar y guardar luces  
-&nbsp;&nbsp;└── gestion_dispositivos.py # Funciones para operar sobre las luces
+```
+dev15-plus/
+├── main.py                          # Programa principal
+└── src/
+    ├── data/
+    │   └── luces.json              # JSON que actúa como base de datos
+    └── services/
+        ├── luces.py               # Funciones para cargar y guardar luces
+        └── gestion_dispositivos.py # Funciones para operar sobre las luces
+```
+
 ## Funcionalidades
 
 - Listar todas las luces registradas  
@@ -27,6 +30,6 @@ dev15-plus/
    ```bash
    git clone https://[https://github.com/ABP-DEV15/dev15-plus/]  
 2. Ejecutar con Python:
-   python main.py
+   main.py
 
 
