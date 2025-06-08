@@ -53,28 +53,8 @@ def cambiar_estado(nombre, nuevo_estado):
 
 def automatizacion_por_horario(luces):
     ahora = datetime.datetime.now().time()
-    
-    # Enciende la luz del Patio a las 18:30
-    if ahora.hour == 18 and ahora.minute == 30:
-        for luz in luces:
-            if luz['nombre'].lower() == 'patio':
-                if not luz['estado']:
-                    luz['estado'] = True
-                    print("Luz 'Patio' encendida automáticamente a las 18:30.")
-        guardar_luces(luces)
 
-    # Apaga todas las luces a las 23:00
-    if ahora.hour == 23 and ahora.minute == 00:
-        cambio = False
-        for luz in luces:
-            if luz['estado']:
-                luz['estado'] = False
-                cambio = True
-        if cambio:
-            print("Las luces fueron apagadas automáticamente a las 23:00.")
-            guardar_luces(luces)
-
-    # Prender luz del frente a las 19:00Hs
+     # Prender luz del frente a las 19:00Hs
     if ahora.hour == 19 and ahora.minute == 0:
         for luz in luces:
             if luz['nombre'].lower() == 'frente':
@@ -82,3 +62,16 @@ def automatizacion_por_horario(luces):
                     luz['estado'] = True
                     print("Luz 'Frente' encendida automáticamente al anochecer (19:00).")
         guardar_luces(luces)
+    
+     # Apaga todas las luces a las 23:00 excepto la del frente
+    if ahora.hour == 23 and ahora.minute == 0:
+     cambio = False
+    for luz in luces:
+        if luz['estado'] and luz['nombre'].lower() != 'frente':
+            luz['estado'] = False
+            cambio = True
+    if cambio:
+        print("Todas las luces (excepto la del frente') fueron apagadas automáticamente a las 23:00.")
+        guardar_luces(luces)
+
+   

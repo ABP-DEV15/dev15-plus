@@ -10,7 +10,7 @@ def menu():
     print("2. Buscar luz por nombre")
     print("3. Agregar luz")
     print("4. Eliminar luz")
-    print("5. Ejecutar automatización por horario")
+    print("5. Ejecutar Modo de ahorro de energia")
     print("6. Salir")
 
 while True:
@@ -35,7 +35,7 @@ while True:
 
     elif opcion == "5":
         automatizacion_por_horario(luces)
-        print("Automatización ejecutada según horario configurado.")
+        print("Modo de ahorro de energia ejecutado.")
         
     elif opcion == "6":
         print("Programa finalizado.")

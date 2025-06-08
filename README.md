@@ -22,7 +22,7 @@ dev15-plus/
 - Buscar una luz por nombre  
 - Agregar una nueva luz  
 - Eliminar una luz existente  
-- Activar el modo de ahorro de energía  
+- Activar el modo de ahorro de energía(Apaga todas las luces excepto la del frente)
 
 ## Cómo ejecutar
 
