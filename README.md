@@ -31,5 +31,3 @@ dev15-plus/
    git clone https://[https://github.com/ABP-DEV15/dev15-plus/]  
 2. Ejecutar con Python:
    main.py
-
-
