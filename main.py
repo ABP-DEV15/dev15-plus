@@ -1,44 +1,56 @@
-from src.services.luces import cargar_luces
-from src.services.gestion_dispositivos import listar_luces, buscar_luz, agregar_luz, eliminar_luz
-from src.services.gestion_dispositivos import automatizacion_por_horario
+from datausers import *
+from luces import *
 
-luces = cargar_luces()
-def menu():
-    print("**********Bienvenido a SmartHome**********")
-    print("**********MENU PRINCIPAL**********")
-    print("1. Listar luces ")
-    print("2. Buscar luz por nombre")
-    print("3. Agregar luz")
-    print("4. Eliminar luz")
-    print("5. Ejecutar Modo de ahorro de energia")
-    print("6. Salir")
+def inicio_sesion():
+    data = {}
+    usuario = input('Ingrese su usuario: ')
+    data['usuario'] = usuario
+    password = input('Ingrese su credencial de acceso: ')
+    data['password'] = password
+    return buscar_usuario(data)
 
-while True:
-    menu()
-    opcion = input("Seleccione una opcion: ")
-    if opcion == "1":
-        listar_luces(luces)
-
-    elif opcion == "2":
-        luz_nombre = input("Ingrese el nombre de la luz a buscar: ")
-        buscar_luz(luces, luz_nombre)
+def registro():
+    data = {}
+    usuario = input('Ingrese su nombre de usuario: ')
+    data['usuario'] = usuario
+    password = input('ingrese su contreña: ')
+    data['password'] = password
+    dni = input('Ingrese su DNI: ')
+    data['dni'] = dni
+    insertar_usuarios(data, USUARIOS)
+    print('Use su nuevo usuario')
+    inicio_sesion()
 
 
-    elif opcion == "3":
-        nueva_luz = input("Ingrese el nombre de la nueva luz: ")
-        agregar_luz(luces, nueva_luz)
-
-    elif opcion == "4":
-         luz_eliminar = input("Ingrese el nombre de la luz a eliminar: ")
-         luces = eliminar_luz(luces, luz_eliminar)
-
-
-    elif opcion == "5":
-        automatizacion_por_horario(luces)
-        print("Modo de ahorro de energia ejecutado.")
-        
-    elif opcion == "6":
-        print("Programa finalizado.")
-        break
+def view_main(data):
+    if data == 'regular':
+        menu()
     else:
-        print("Opcion no valida, elije una opcion del 1 al 6.")
+        hacer = input('Que desea hacer?: ' \
+        '1 consultar automatizaciones, ' \
+        '2 Automatizar dispositivo, ' \
+        '3 modificar rol de usuario')
+        match hacer:
+            case '3':
+                data = input('Cual es el nombre del usuario que desea modificar: ')
+                user['usuario'] = data
+                modificar_usuario(user)
+
+def main():
+    option = input("Bievenido, en caso de tener un usuario escriba 1, en caso de necesitar registrarse escriba 2:")
+    match option:
+        case '1':
+            ingreso = inicio_sesion()
+            if ingreso[0]:
+                view_main(ingreso[1])
+            else:
+                print(ingreso[1])
+                ingreso = inicio_sesion()
+        case '2':
+            registro()
+        case _:
+            print('Por favor, ingrese una opcion valida')    
+
+if __name__ == "__main__":
+    main()
+

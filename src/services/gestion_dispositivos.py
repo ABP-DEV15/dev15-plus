@@ -1,5 +1,5 @@
 import uuid
-from .luces import cargar_luces, guardar_luces
+from src.services.luces import cargar_luces, guardar_luces
 import datetime
 
 luces = cargar_luces()
@@ -65,13 +65,13 @@ def automatizacion_por_horario(luces):
     
      # Apaga todas las luces a las 23:00 excepto la del frente
     if ahora.hour == 23 and ahora.minute == 0:
-     cambio = False
+        cambio = False
     for luz in luces:
         if luz['estado'] and luz['nombre'].lower() != 'frente':
             luz['estado'] = False
             cambio = True
-    if cambio:
-        print("Todas las luces (excepto la del frente') fueron apagadas automáticamente a las 23:00.")
-        guardar_luces(luces)
+            if cambio:
+                print("Todas las luces (excepto la del frente') fueron apagadas automáticamente a las 23:00.")
+                guardar_luces(luces)
 
    
