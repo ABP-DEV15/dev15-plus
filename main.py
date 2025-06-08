@@ -16,16 +16,22 @@ while True:
     menu()
     opcion = input("Seleccione una opcion: ")
     if opcion == "1":
-        print(f"Listando luces: {listar_luces}")
+        listar_luces(luces)
+
     elif opcion == "2":
         luz_nombre = input("Ingrese el nombre de la luz a buscar: ")
-        print(f"Luz: {luz_nombre}")
+        buscar_luz(luces, luz_nombre)
+
+
     elif opcion == "3":
         nueva_luz = input("Ingrese el nombre de la nueva luz: ")
-        print(f"Agregando luz: {nueva_luz}...")
+        agregar_luz(luces, nueva_luz)
+
     elif opcion == "4":
-        luz_eliminar = input("Ingrese el nombre de la luz a eliminar: ")
-        print(f"Eliminando luz: {luz_eliminar}...")
+         luz_eliminar = input("Ingrese el nombre de la luz a eliminar: ")
+         luces = eliminar_luz(luces, luz_eliminar)
+
+
     elif opcion == "5":
         print("Activando modo ahorro de energia...")
     elif opcion == "6":
