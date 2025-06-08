@@ -1,0 +1,12 @@
+[
+  {
+    "nombre": "admin",
+    "rol": "administrador",
+    "email": "admin@smarthome.com"
+  },
+  {
+    "nombre": "usuario1",
+    "rol": "usuario",
+    "email": "usuario1@smarthome.com"
+  }
+]
