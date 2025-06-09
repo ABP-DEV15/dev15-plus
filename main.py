@@ -50,19 +50,20 @@ def view_main(data):
                     print("Opción inválida.")
 
 def main():
-    option = input("Bievenido, en caso de tener un usuario escriba 1, en caso de necesitar registrarse escriba 2:")
-    match option:
+    opcion = input("Bienvenido. Si tiene usuario escriba 1. Para registrarse escriba 2: ")
+    match opcion:
         case '1':
-            ingreso = inicio_sesion()
-            if ingreso[0]:
-                view_main(ingreso[1] if ingreso[1] == 'regular' else 'admin')
+            exito, usuario = inicio_sesion()
+            if exito:
+                view_main(usuario)
             else:
-                print(ingreso[1])
-                ingreso = inicio_sesion()
+                print(usuario) 
         case '2':
-            registro()
+            exito, usuario = registro()
+            if exito:
+                view_main(usuario)
         case _:
-            print('Por favor, ingrese una opcion valida')    
+            print('Por favor, ingrese una opción válida')
 
 if __name__ == "__main__":
     main()
