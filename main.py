@@ -13,18 +13,18 @@ def registro():
     data = {}
     usuario = input('Ingrese su nombre de usuario: ')
     data['usuario'] = usuario
-    password = input('ingrese su contreña: ')
+    password = input('Ingrese su contraseña: ')
     data['password'] = password
     dni = input('Ingrese su DNI: ')
     data['dni'] = dni
     insertar_usuarios(data, USUARIOS)
     print('Use su nuevo usuario')
-    inicio_sesion()
-
+    return buscar_usuario(data)
 
 def view_main(usuario):
-   if usuario['rol'] == 'regular':
+    if usuario['rol'] == 'regular':
         mostrar_datos_personales(usuario)
+
     elif usuario['rol'] == 'admin':
         while True:
             hacer = input(
@@ -35,28 +35,33 @@ def view_main(usuario):
                 "4. Salir\n"
                 "Seleccione una opción: "
             )
-        match hacer:
-            case '1':
-                luces = cargar_luces()
-                listar_luces(luces)
-            case '2':
-                luces = cargar_luces()
-                automatizacion_por_horario(luces)
-            case '3':
-                email = input('Email del usuario a modificar: ')
-                modificar_usuario(email)
-            case '4':
-                break
-            case _:
-                print("Opción inválida.")
+            match hacer:
+                case '1':
+                    luces = cargar_luces()
+                    listar_luces(luces)
+
+                case '2':
+                    luces = cargar_luces()
+                    automatizacion_por_horario(luces)
+
+                case '3':
+                    email = input('Email del usuario a modificar: ')
+                    modificar_usuario(email)  
+
+                case '4':
+                    break
+
+                case _:
+                    print("Opción inválida.")
     else:
         print("Rol no reconocido.")
-        
+
+
 def main():
-    option = input("Bievenido, en caso de tener un usuario escriba 1, en caso de necesitar registrarse escriba 2:")
-    match option:
+    opcion = input("Bienvenido. Si tiene usuario escriba 1. Para registrarse escriba 2: ")
+    match opcion:
         case '1':
-            ingreso = inicio_sesion()
+            exito, usuario = inicio_sesion()
             if exito:
                 view_main(usuario)
             else:
@@ -66,8 +71,7 @@ def main():
             if exito:
                 view_main(usuario)
         case _:
-            print('Por favor, ingrese una opcion valida')    
+            print('Por favor, ingrese una opción válida')
 
 if __name__ == "__main__":
     main()
-

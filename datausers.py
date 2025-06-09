@@ -14,28 +14,27 @@ def insertar_usuarios(data, dir):
         datos.append(data)
     else:
         print("Primer usuario registrado, asignado como admin.")
-        datos = [ {
-            'usuario' : data['usuario'],
+        datos = [{
+            'usuario': data['usuario'],
             'password': data['password'],
             'rol': 'admin',
             'dni': data.get('dni', '00')
-            }
-        ]
-        with open(dir, 'w') as file:
-            json.dump(datos, file, indent=4)
+        }]
+    with open(dir, 'w') as file:
+        json.dump(datos, file, indent=4)
+    print("Usuario insertado correctamente.")
 
 def buscar_usuario(user):
     with open(USUARIOS, 'r') as file:
         data = json.load(file)
-        usuario = next((item for item in data if item.get("usuario") == user['usuario']), None)    
+        usuario = next(
+            (item for item in data if item.get("usuario") == user['usuario'] and item.get("password") == user['password']),
+            None
+        )
     if usuario:
-        password = next((item for item in data if item.get("password") == user['password']), None)    
-        if password:
-            return True, usuario
-        else:
-            return False, 'No ingresa'
+        return True, usuario
     else:
-        return False, 'No ingresa'
+        return False, 'Usuario o contraseña incorrectos'
         
             
 def modificar_usuario(user):
@@ -43,7 +42,7 @@ def modificar_usuario(user):
         data = json.load(file)
         usuario = next((item for item in data if item.get("usuario") == user['usuario']), None)
         if usuario:
-            usuario['rol'] = nuevo_rol = input(f"Ingrese nuevo rol para '{user['usuario']}' (admin/regular): ").strip().lower()
+            nuevo_rol = input(f"Ingrese nuevo rol para '{user['usuario']}' (admin/regular): ").strip().lower()
             if nuevo_rol in ['admin', 'regular']:
                 usuario['rol'] = nuevo_rol
                 print(f"Rol del usuario '{user['usuario']}' actualizado a '{nuevo_rol}'.")
@@ -62,7 +61,7 @@ user = {
 def mostrar_datos_personales(usuario_actual):
     with open(USUARIOS, 'r') as file:
         data = json.load(file)
-        usuario = next((item for item in data if item.get("usuario") == usuario_actual), None)
+        usuario = next((item for item in data if item.get("usuario") == usuario_actual['usuario']), None)
         if usuario:
             print("\n--- DATOS PERSONALES ---")
             print(f"Usuario: {usuario['usuario']}")
@@ -70,3 +69,4 @@ def mostrar_datos_personales(usuario_actual):
             print(f"Rol: {usuario['rol']}")
         else:
             print("Usuario no encontrado.")
+
