@@ -1,5 +1,9 @@
 from datausers import *
 from luces import *
+user = {}
+
+user['usuario'] = data
+modificar_usuario(user)
 
 def inicio_sesion():
     data = {}
@@ -24,17 +28,30 @@ def registro():
 
 def view_main(data):
     if data == 'regular':
-        menu()
+        mostrar_datos_personales(data)
     else:
         hacer = input('Que desea hacer?: ' \
-        '1 consultar automatizaciones, ' \
-        '2 Automatizar dispositivo, ' \
-        '3 modificar rol de usuario')
+        '1. consultar automatizaciones, ' \
+        '2. Automatizar dispositivo, ' \
+        '3. modificar rol de usuario ' \
+        '4. Salir ' \
+        'Seleccione una opción: ')
         match hacer:
+            case '1':
+                    luces = cargar_luces()
+                    listar_luces(luces)
+            case '2':
+                    luces = cargar_luces()
+                    automatizacion_por_horario(luces)
             case '3':
                 data = input('Cual es el nombre del usuario que desea modificar: ')
                 user['usuario'] = data
                 modificar_usuario(user)
+            case '4':
+                    print("Saliendo del menú de administrador.")
+                    break
+            case _:
+                    print("Opción inválida.")
 
 def main():
     option = input("Bievenido, en caso de tener un usuario escriba 1, en caso de necesitar registrarse escriba 2:")
@@ -42,7 +59,7 @@ def main():
         case '1':
             ingreso = inicio_sesion()
             if ingreso[0]:
-                view_main(ingreso[1])
+                view_main(ingreso[1] if ingreso[1] == 'regular' else 'admin')
             else:
                 print(ingreso[1])
                 ingreso = inicio_sesion()
@@ -53,4 +70,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
