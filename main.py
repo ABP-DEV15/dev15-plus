@@ -22,32 +22,49 @@ def registro():
     inicio_sesion()
 
 
-def view_main(data):
-    if data == 'regular':
-        menu()
-    else:
-        hacer = input('Que desea hacer?: ' \
-        '1 consultar automatizaciones, ' \
-        '2 Automatizar dispositivo, ' \
-        '3 modificar rol de usuario')
+def view_main(usuario):
+   if usuario['rol'] == 'regular':
+        mostrar_datos_personales(usuario)
+    elif usuario['rol'] == 'admin':
+        while True:
+            hacer = input(
+                "\n¿Qué desea hacer?:\n"
+                "1. Consultar automatizaciones\n"
+                "2. Automatizar dispositivo (modo ahorro)\n"
+                "3. Modificar rol de usuario\n"
+                "4. Salir\n"
+                "Seleccione una opción: "
+            )
         match hacer:
+            case '1':
+                luces = cargar_luces()
+                listar_luces(luces)
+            case '2':
+                luces = cargar_luces()
+                automatizacion_por_horario(luces)
             case '3':
-                data = input('Cual es el nombre del usuario que desea modificar: ')
-                user['usuario'] = data
-                modificar_usuario(user)
-
+                email = input('Email del usuario a modificar: ')
+                modificar_usuario(email)
+            case '4':
+                break
+            case _:
+                print("Opción inválida.")
+    else:
+        print("Rol no reconocido.")
+        
 def main():
     option = input("Bievenido, en caso de tener un usuario escriba 1, en caso de necesitar registrarse escriba 2:")
     match option:
         case '1':
             ingreso = inicio_sesion()
-            if ingreso[0]:
-                view_main(ingreso[1])
+            if exito:
+                view_main(usuario)
             else:
-                print(ingreso[1])
-                ingreso = inicio_sesion()
+                print(usuario) 
         case '2':
-            registro()
+            exito, usuario = registro()
+            if exito:
+                view_main(usuario)
         case _:
             print('Por favor, ingrese una opcion valida')    
 
