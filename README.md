@@ -6,14 +6,24 @@ Permite listar, buscar, agregar y eliminar luces, además de activar un modo de 
 ## 🗂️ Estructura del Proyecto
 
 ```
-dev15-plus/
-├── main.py                          # Programa principal
-└── src/
-    ├── data/
-    │   └── luces.json              # JSON que actúa como base de datos
-    └── services/
-        ├── luces.py               # Funciones para cargar y guardar luces
-        └── gestion_dispositivos.py # Funciones para operar sobre las luces
+   dev15-plus/
+   ├── src/                      # código fuente (principalmente Ev2 y Ev3)
+   ├── docs/                     # toda la documentación
+   │   ├── ev2/                  # documentos de la Evidencia 2
+   │   │   ├── ev2_automatizacion.pdf
+   │   │   ├── ev2_der_modelo.pdf
+   │   │   └── ev2_politica_datos.pdf
+   │   ├── ev3/                  # documentos de la Evidencia 3
+   │   │   ├── ev3_modelo_relacional.pdf
+   │   │   ├── ev3_informe_etica.pdf
+   │   │   ├── ev3_manual_etico.pdf
+   │   │   └── ev3_demo_link.txt   # o ponerlo también en README
+   │   └── ev5/                  # (cuando llegues a esta etapa)
+   │       ├── diagrama_clases.pdf
+   │       └── justificacion_poo.pdf
+   ├── POO-SmartHome/            # código POO + TDD (Ev5)
+   ├── BD-Evidencia-5/           # scripts SQL (Ev5)
+   └── README.md
 ```
 
 ## Funcionalidades

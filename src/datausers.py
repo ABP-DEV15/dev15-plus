@@ -1,7 +1,7 @@
 import os
 import json
 
-USUARIOS = os.path.join(os.path.dirname(__file__), "src/data/users.json")
+USUARIOS = os.path.join(os.path.dirname(__file__), "data", "users.json")
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 def insertar_usuarios(data, dir):
     if os.path.exists(dir) and os.path.getsize(dir) > 2:
