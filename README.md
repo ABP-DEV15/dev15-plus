@@ -7,8 +7,8 @@ Permite listar, buscar, agregar y eliminar luces, además de activar un modo de 
 
 ```
    dev15-plus/
-   ├── src/                      # código fuente (principalmente Ev2 y Ev3)
-   ├── docs/                     # toda la documentación
+   ├── src/                      # código fuente (Ev2 y Ev3)
+   ├── docs/                     # toda la documentación (Ev2 y Ev3)
    │   ├── ev2/                  # documentos de la Evidencia 2
    │   │   ├── ev2_automatizacion.pdf
    │   │   ├── ev2_der_modelo.pdf
@@ -17,10 +17,7 @@ Permite listar, buscar, agregar y eliminar luces, además de activar un modo de 
    │   │   ├── ev3_modelo_relacional.pdf
    │   │   ├── ev3_informe_etica.pdf
    │   │   ├── ev3_manual_etico.pdf
-   │   │   └── ev3_demo_link.txt   # o ponerlo también en README
-   │   └── ev5/                  # (cuando llegues a esta etapa)
-   │       ├── diagrama_clases.pdf
-   │       └── justificacion_poo.pdf
+   │       
    ├── POO-SmartHome/            # código POO + TDD (Ev5)
    ├── BD-Evidencia-5/           # scripts SQL (Ev5)
    └── README.md
