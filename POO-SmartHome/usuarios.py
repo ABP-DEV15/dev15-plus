@@ -21,7 +21,7 @@ class Usuario:
     @contraseña.setter
     def contraseña(self, nueva_contraseña):
         if len(nueva_contraseña) < 8:
-            return "La contraseña debe tener al menos 8 caracteres."
+            raise ValueError ("La contraseña debe tener al menos 8 caracteres.")
         self._contraseña = nueva_contraseña
 
     @property
