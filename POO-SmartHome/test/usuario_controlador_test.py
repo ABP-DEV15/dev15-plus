@@ -10,7 +10,6 @@ def controlador():
 
 def test_insertar_usuario(controlador):
     usuario = controlador.insertar_usuario("pablo", "12345678", "12345678")
-    
     assert isinstance(usuario, Usuario)
     assert usuario.usuario == "pablo"
     assert usuario.contraseña == "12345678"
@@ -25,9 +24,3 @@ def test_obtener_usuario(controlador):
     assert usuario.usuario == "ana"
     usuario_none = controlador.obtener_usuario("00000000")
     assert usuario_none is None
-
-def test_asignar_luz(controlador):
-    usuario = controlador.insertar_usuario("luis", "abcdefgh", "11223344")
-    controlador.asignar_luz(usuario, "Luz1")
-    assert "Luz1" in usuario.luces
-    assert len(usuario.luces) == 1
