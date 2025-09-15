@@ -5,7 +5,6 @@ class Usuario:
         self._usuario = usuario
         self._contraseña = contraseña
         self._dni = dni
-        self._luces = set()
     
     @property
     def usuario(self):
@@ -34,11 +33,7 @@ class Usuario:
         if len(valor) not in (7, 8):
             raise ValueError("El DNI debe tener entre 7 y 8 caracteres")
         self._dni = valor
-    
-    @property
-    def luces(self):
-        return self._luces
-    
+
 
 class UsuarioControlador(BaseDeDatos):
     def __init__(self):
