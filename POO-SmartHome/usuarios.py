@@ -1,5 +1,5 @@
 class Usuario:
-    def __init__(self, usuario, contraseña, dni, rol, luces):
+    def __init__(self, usuario, contraseña, dni, rol):
         self._usuario = usuario
         self._contraseña = contraseña
         self._dni = dni
