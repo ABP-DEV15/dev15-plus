@@ -22,3 +22,11 @@ def test_luces_pueden_apagarse(luces_fixture):
         luces_fixture.encender()
         luces_fixture.apagar()
         assert luces_fixture.estado() == "apagadas"
+
+def test_intensidad_se_ajusta_al_usuario(luces_fixture):
+        luces_fixture._intensidad = 5
+        assert luces_fixture._intensidad == 5
+# la intensidad de luz se adapta a preferencia del usuario.
+        luces_fixture._intensidad = 20
+        assert luces_fixture._intensidad == 20
+# no deberia haberse modificado a ese valor.
