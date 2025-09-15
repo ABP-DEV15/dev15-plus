@@ -51,3 +51,6 @@ class UsuarioControlador(BaseDeDatos):
             return None
     def _crear_usuario(self, usuario: str, contraseña: str, dni:str) -> Usuario:
         return Usuario(usuario, contraseña, dni)
+    
+A = UsuarioControlador()
+print(A.insertar_usuario("admin", "12345678", "12345678").usuario)
