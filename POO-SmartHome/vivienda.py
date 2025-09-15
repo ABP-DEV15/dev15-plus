@@ -1,9 +1,10 @@
 class Vivienda:
-    def __init__(self, calle, altura, ciudad, id_vivienda):
+    def __init__(self, calle, altura, ciudad, id_vivienda, luces):
         self._calle = calle
         self._altura = altura
         self._ciudad = ciudad
         self._id_vivienda = id_vivienda
+        self._luces = luces
 
     @property
     def calle(self):
@@ -28,4 +29,8 @@ class Vivienda:
         return self._id_vivienda
     @id_vivienda.setter
     def id_vivienda(self, nuevo_id):
-        self._id_vivienda = nuevo_id    
+        self._id_vivienda = nuevo_id
+
+    def _listar_luces(self):
+        for luz in self._luces:
+            print(luz)       
