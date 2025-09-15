@@ -30,6 +30,12 @@ class Vivienda:
     @id_vivienda.setter
     def id_vivienda(self, nuevo_id):
         self._id_vivienda = nuevo_id
+    @property
+    def luces(self):
+        return self._luces
+    @luces.setter
+    def luces(self, nuevas_luces):
+        self._luces = nuevas_luces    
 
     def _listar_luces(self):
         for luz in self._luces:
