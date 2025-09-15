@@ -49,7 +49,5 @@ class UsuarioControlador(BaseDeDatos):
             if u.dni == dni:
                 return u
             return None
-    def asignar_luz(self, usuario: Usuario, luz: str) -> None:
-        usuario.luces.add(luz)
     def _crear_usuario(self, usuario: str, contraseña: str, dni:str) -> Usuario:
         return Usuario(usuario, contraseña, dni)
