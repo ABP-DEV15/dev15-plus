@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.43, for Win64 (x86_64)
 --
--- Host: localhost    Database: smarthome
+-- Host: localhost    Database: smarthome_lucesinteligentes
 -- ------------------------------------------------------
 -- Server version	8.0.43
 
@@ -14,6 +14,43 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `viviendas`
+--
+
+DROP TABLE IF EXISTS `viviendas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `viviendas` (
+  `id_vivienda` int NOT NULL AUTO_INCREMENT,
+  `calle` varchar(100) NOT NULL,
+  `altura` int DEFAULT NULL,
+  `ciudad` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_vivienda`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+--
+-- Table structure for table `usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usuarios` (
+  `id_usuario` int NOT NULL AUTO_INCREMENT,
+  `usuario` varchar(50) NOT NULL,
+  `contrasena` varchar(255) NOT NULL,
+  `dni` char(8) NOT NULL,
+  `rol` enum('admin','estandar') DEFAULT 'estandar',
+  PRIMARY KEY (`id_usuario`),
+  UNIQUE KEY `dni` (`dni`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
 
 --
 -- Table structure for table `luces`
@@ -34,23 +71,6 @@ CREATE TABLE `luces` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Table structure for table `usuarios`
---
-
-DROP TABLE IF EXISTS `usuarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuarios` (
-  `id_usuario` int NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(50) NOT NULL,
-  `contrasena` varchar(255) NOT NULL,
-  `dni` char(8) NOT NULL,
-  `rol` enum('admin','estandar') DEFAULT 'estandar',
-  PRIMARY KEY (`id_usuario`),
-  UNIQUE KEY `dni` (`dni`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `usuarios_viviendas`
@@ -69,22 +89,6 @@ CREATE TABLE `usuarios_viviendas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Table structure for table `viviendas`
---
-
-DROP TABLE IF EXISTS `viviendas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `viviendas` (
-  `id_vivienda` int NOT NULL AUTO_INCREMENT,
-  `calle` varchar(100) NOT NULL,
-  `altura` int DEFAULT NULL,
-  `ciudad` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_vivienda`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
@@ -94,4 +98,4 @@ CREATE TABLE `viviendas` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-16  9:38:17
+-- Dump completed on 2025-09-16 11:08:56

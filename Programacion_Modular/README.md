@@ -8,14 +8,22 @@ Permite listar, buscar, agregar y eliminar luces, además de activar un modo de 
 ```
    dev15-plus/
    ├── src/                      # código fuente (Ev2 y Ev3)
-   ├── docs/                     # toda la documentación (Ev2 y Ev3)
-   │   ├── ev2/                  # documentos de la Evidencia 3
+   │     ├── data/  
+   │     │      ├── luces.json
+   │     │      ├── user.json
+   │     ├── services/
+   │     │      ├── gestion_dispositivos.py
+   │     │      ├── luces.py
+   ├── datauser.py
+   ├── main.py
+   ├── menu_luces.py 
+   │
+   ├── docs/   # toda la documentación (Ev2 y Ev3)
+   │   ├── ev2y3/   # documentos de la Evidencia 3
    │   │   ├── ev2_automatizacion.pdf
-   │   │   ├── ev2_der_modelo.pdf
-   │   │   └── ev2_politica_datos.pdf
+   │   │   ├── Diagrama_entidad_relacion.sgv
    │   │   ├── ev3_modelo_relacional.pdf
-   │   │   ├── ev3_informe_etica.pdf
-   │   │   ├── ev3_manual_etico.pdf
+   │   │   ├── ev3_informe_eticaymanual_etico.pdf
    │       
    └── README.md
 ```

@@ -31,20 +31,19 @@ Este repositorio contiene los scripts SQL para la base de datos del sistema Smar
 
     Las consultas SELECT al final mostrarán los datos insertados
 
-5. **Consultas de ejemplo**
-    -- Ver todos los usuarios:
+5. **Consultas de ejemplo incluidas en el DML**
+    -- Ver todos los usuarios
     SELECT * FROM usuarios;
 
-    -- Ver luces por vivienda:
-    SELECT v.calle, v.ciudad, l.nombre, l.encendida 
-    FROM luces l 
-    JOIN viviendas v ON l.id_vivienda = v.id_vivienda;
+    -- Ver todas las viviendas
+    SELECT * FROM viviendas;
 
-    -- Ver usuarios con sus viviendas:
-    SELECT u.usuario, v.calle, v.ciudad 
-    FROM usuarios u 
-    JOIN usuarios_viviendas uv ON u.id_usuario = uv.id_usuario 
-    JOIN viviendas v ON uv.id_vivienda = v.id_vivienda;
+    -- Ver todas las luces
+    SELECT * FROM luces;
+
+    -- Ver la relación usuarios_viviendas
+    SELECT * FROM usuarios_viviendas;
+
 
 5. **Estructura de Base de Datos**
 

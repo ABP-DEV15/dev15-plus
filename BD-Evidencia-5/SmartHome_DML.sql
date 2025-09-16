@@ -31,7 +31,7 @@ INSERT INTO luces (nombre, encendida, intensidad, id_vivienda) VALUES
 -- Vivienda 2
 ('Luz Living', 1, 75, 2),
 ('Luz Comedor', 0, 0, 2),
-('Luz Jardín', 1, 30, 2),
+('Luz Jardï¿½n', 1, 30, 2),
 -- Vivienda 3
 ('Luz Entrada', 1, 100, 3),
 ('Luz Garaje', 0, 0, 3),
@@ -42,4 +42,17 @@ INSERT INTO luces (nombre, encendida, intensidad, id_vivienda) VALUES
 ('Luz Patio', 1, 20, 5),
 -- Vivienda 6
 ('Luz Estudio', 1, 90, 6);
+
+-- Ver todos los usuarios
+SELECT * FROM usuarios;
+
+-- Ver todas las viviendas
+SELECT * FROM viviendas;
+
+-- Ver todas las luces
+SELECT * FROM luces;
+
+-- Ver la relaciÃ³n usuarios_viviendas
+SELECT * FROM usuarios_viviendas;
+
 
