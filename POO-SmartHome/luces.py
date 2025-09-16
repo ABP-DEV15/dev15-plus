@@ -10,7 +10,7 @@ class Luces:
                 return "apagadas"
 
 
-class Lucesencender:
+class Luces:
     def __init__(self):
             self._encendida
 
@@ -23,7 +23,7 @@ class Lucesencender:
         self._encendida = True
 
 
-class Lucesapagar:
+class Luces:
     def __init__(self):
         self._encendida = False
 
@@ -39,7 +39,7 @@ class Lucesapagar:
         self._encendida = False
 
 
-class Lucesintensidad:
+class Luces:
     def __init__(self):
         self._encendida = False
         self._intensidad = 0 #variable para la luminosidad
