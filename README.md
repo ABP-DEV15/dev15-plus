@@ -1,8 +1,13 @@
 
 ```
     │──BD-EVIDENCIA-5  # Scripts SQL
+    │    │   ├── Readme.md # Explicacion de como ejecutar los Scripts
+    │    │   ├── smartHome_DLL.sql # DLL de las tablas Viviendas, Usuarios, Luces y Usuarios_Viviendas
+    │    │   └── SmartHome_DML.sql # DML para insertar datos y realizar consultas.
     │
     │──DC-EVIDENCIA-5  # Diagrama de clases
+    │    │   ├── Diagrama de Clases
+    │    │   ├── fundamentos POO del diagrama de clases
     │
     │──POO-SmartHome/ # código POO + TDD (Ev5)
     │    ├── tests/  # Implementacion TDD
