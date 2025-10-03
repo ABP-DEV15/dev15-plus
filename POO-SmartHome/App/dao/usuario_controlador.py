@@ -1,4 +1,4 @@
-from App.conn.base_de_datos import BaseDeDatos
+from conn.base_de_datos import BaseDeDatos
 
 class Usuario:
     def __init__(self, usuario: str, contraseña: str, dni: str):

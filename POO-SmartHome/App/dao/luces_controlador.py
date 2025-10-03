@@ -1,4 +1,4 @@
-from App.conn.base_de_datos import BaseDeDatos
+from conn.base_de_datos import BaseDeDatos
 
 class LucesControlador(BaseDeDatos):
     def __init__(self):
