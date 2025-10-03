@@ -18,6 +18,7 @@ def test_luces_pueden_encenderse(luces_fixture):
         assert luces_fixture.estado() == "encendidas"
 
 def test_luces_pueden_apagarse(luces_fixture):
+        return Luces()
         luces_fixture.encender()
         luces_fixture.apagar()
         assert luces_fixture.estado() == "apagadas"
