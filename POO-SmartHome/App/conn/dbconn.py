@@ -3,7 +3,6 @@ import configparser
 import mysql.connector
 from mysql.connector import errorcode
 
-
 class DBCconn:
     def __init__(self, config_file='config.ini'):
         self.config_file = config_file
