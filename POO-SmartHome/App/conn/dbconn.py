@@ -12,9 +12,6 @@ class DBCconn:
             config.read(config_path)
             self.db_config = config['database']
 
-    def get_config_path(self):
-        return self.config_file
-
     def obtener_base_de_datos(self):
         return self.db_config.get('database')
 
