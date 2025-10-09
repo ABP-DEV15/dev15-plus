@@ -1,5 +1,5 @@
 class Vivienda:
-    def __init__(self, calle, altura, ciudad, id_vivienda, luces):
+    def __init__(self, calle, altura, ciudad, id_vivienda, luces =[]):
         self._calle = calle
         self._altura = altura
         self._ciudad = ciudad
