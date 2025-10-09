@@ -40,6 +40,3 @@ class Usuario:
     @rol.setter
     def rol(self, nuevo_rol):
         self._rol = nuevo_rol
-
-    def _mostrar_datos_personales(self):
-        return f"Usuario: {self._usuario}, DNI: {self._dni}, Rol: {self._rol}"

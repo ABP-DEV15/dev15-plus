@@ -63,4 +63,5 @@ class ViviendaDAO(DataAccessDAO):
                 cursor.execute(query, (id,))
                 conn.commit()
             except mysql.connector.Error as err:
-                raise err        
+                raise err
+            
