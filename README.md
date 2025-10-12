@@ -10,19 +10,55 @@
     │    │   ├── fundamentos POO del diagrama de clases
     │
     │──POO-SmartHome/ # código POO + TDD (Ev5)
-    │    ├── tests/  # Implementacion TDD
-    │    │   ├── usuario_test.py
-    │    │   ├── luces_test.py
-    │    │   └── usuario_controlador_test.py
-    │    │   └── luces_controlador_test.py
-    │    │── __init__.py
-    │    │──  Base_De_Datos.py    # simula la conexion a la Base De Datos
-    │    │── usuarios.py  # Modela la entidad usuario
-    │    │── luces.py  # Comportamiento de las luces
-    │    │── usuario_controlador.py  # Gestion de usuarios
-    │    │── luces_controlador.py  # Gestion de Luces
-    │    └── README.md
+        ─App
+           │   config.ini
+           │   Poo.pdf
+           │
+           ├───conn
+           │   │   
+           │   └───dbconn.py
+           │   
+           │
+           ├───dao
+           │   │   luces_dao.py
+           │   │   usuario_dao.py
+           │   │   vivienda_dao.py
+           │
+           ├───dominio
+           │   │   dispositivo.py
+           │   │   luces.py
+           │   │   usuarios.py
+           │   │   vivienda.py
+           │
+           ├───interface
+           │   │   data_access_dao.py
+           │
+           ├───test
+              │   luces_controlador_test.py
+              │   luces_test.py
+              │   usuarios_test.py
+              │   usuario_controlador_test.py
+              │   vivienda_test.py
+               └── README.md
     │
     │──Programacion_Modular # Evidencia-3
+      │     ├── src/                      # código fuente (Ev2 y Ev3)
+      │     ├── data/  
+      │     │      ├── luces_data.py
+      │     │      ├── user.py
+      │     ├── services/
+      │            ├── gestion_dispositivos.py
+      │           
+      ├── main.py  # Gestion de usuarios
+      ├── menu_luces.py  # Gestion del Menu Principal de Luces
+      │
+      ├── docs/   # toda la documentación (Ev2 y Ev3)
+      │   ├── ev2y3/   # documentos de la Evidencia 3
+      │   │   ├── ev2_automatizacion.pdf
+      │   │   ├── Diagrama_entidad_relacion.sgv
+      │   │   ├── ev3_modelo_relacional.pdf
+      │   │   ├── ev3_informe_eticaymanual_etico.pdf
+      │       
+      └── README.md
 
 ```
