@@ -61,7 +61,7 @@ class Main:
         id_usuario = usuario_dao.get_id_by_username(admin.usuario)
         vivienda = self.obtener_viviendas_usuario(id_usuario)
         print(f"Usted tiene acceso a la vivienda en {vivienda.calle} {vivienda.altura}, {vivienda.ciudad}")
-        print("1.Gestionar dispositivos")
+        print("1. Gestionar dispositivos")
         print("2. Modificar Rol de usuario")
         input_opcion = input("Seleccione una opción: ")
         if input_opcion == "1":
@@ -151,7 +151,9 @@ class Main:
                 nuevo_dni = input("Ingrese el DNI: ")
                 usuario = Usuario(nuevo_usuario, nueva_contraseña, nuevo_dni, 'estandar')
                 usuario_dao.create(usuario)
-
+            case "3":
+                print("Saliendo...")
+                return
 view = Main()
 
 view.manejar_login(view.menu())
