@@ -1,7 +1,7 @@
 import mysql.connector
 from conn.dbconn import DBConn
 from interface.data_access_dao import DataAccessDAO
-from dominio.usuarios import Usuario
+from dominio.clases_base.usuarios import Usuario
 
 class UsuarioDAO(DataAccessDAO):
     def __init__(self, dbconn: DBConn):

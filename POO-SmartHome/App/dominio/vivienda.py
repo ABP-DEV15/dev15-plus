@@ -1,10 +1,11 @@
 class Vivienda:
-    def __init__(self, calle, altura, ciudad, id_vivienda, luces =[]):
+    def __init__(self, id_vivienda, ciudad, calle, altura, luces=[]):
+        self._id_vivienda = id_vivienda
+        self._ciudad = ciudad
         self._calle = calle
         self._altura = altura
-        self._ciudad = ciudad
-        self._id_vivienda = id_vivienda
-        self._luces = luces
+        self._luces = []
+        
 
     @property
     def calle(self):

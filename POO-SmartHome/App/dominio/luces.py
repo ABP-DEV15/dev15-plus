@@ -1,3 +1,5 @@
+from clases_base.dispositivo import Dispositivo
+
 class Luces(Dispositivo):
     def __init__(self, nombre, intensidad=0):
         super().__init__(nombre)
@@ -13,9 +15,3 @@ class Luces(Dispositivo):
             self._intensidad = valor
         else:
             raise ValueError("La intensidad debe estar entre 0 y 10.")
-
-
-
-       
-            
-     

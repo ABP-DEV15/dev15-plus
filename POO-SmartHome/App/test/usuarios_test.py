@@ -1,5 +1,5 @@
 import pytest
-from dominio.usuarios import Usuario
+from dominio.clases_base.usuarios import Usuario
 
 
 class TestUsuario:
