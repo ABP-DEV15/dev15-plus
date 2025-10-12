@@ -1,4 +1,4 @@
-"class Luces(Dispositivo):
+class Luces(Dispositivo):
     def __init__(self, nombre, intensidad=0):
         super().__init__(nombre)
         self._intensidad = intensidad
