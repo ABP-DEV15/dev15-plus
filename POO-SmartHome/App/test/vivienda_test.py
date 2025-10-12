@@ -1,5 +1,5 @@
 import pytest
-from vivienda import Vivienda
+from dominio.vivienda import Vivienda
 
 class TestVivienda:
     def test_crear_vivienda(self):
