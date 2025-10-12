@@ -1,7 +1,9 @@
-from src.services.luces import cargar_luces
-from src.services.gestion_dispositivos import listar_luces, buscar_luz, agregar_luz, eliminar_luz
-from src.services.gestion_dispositivos import automatizacion_por_horario
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
+from data.luces_data import cargar_luces
+from services.gestion_dispositivos import listar_luces, buscar_luz, agregar_luz, eliminar_luz, automatizacion_por_horario, cambiar_estado
 
 def menu():
     print("**********Bienvenido a SmartHome**********")
@@ -11,7 +13,8 @@ def menu():
     print("3. Agregar luz")
     print("4. Eliminar luz")
     print("5. Ejecutar Modo de ahorro de energia")
-    print("6. Salir")
+    print("6. Encender/apagar Luz")
+    print("7. Salir")
     opcion = input("Seleccione una opcion: ")
     if opcion == "1":
         luces = cargar_luces()
@@ -36,8 +39,19 @@ def menu():
         luces = cargar_luces()
         automatizacion_por_horario(luces)
         print("Modo de ahorro de energia ejecutado.")
-        menu()            
+        menu()
     elif opcion == "6":
+        luces = cargar_luces()
+        listar_luces(luces)
+        luz_nombre = input("Ingrese el nombre de la luz a modificar: ")
+        estado_input = input("Ingrese el estado (1 para encender, 0 para apagar): ")
+        nuevo_estado = estado_input == "1"
+        cambiar_estado(luz_nombre, nuevo_estado)
+        menu()            
+    elif opcion == "7":
         print("Programa finalizado.")
     else:
         print("Opcion no valida, elije una opcion del 1 al 6.")
+
+if __name__ == "__main__":
+    menu()

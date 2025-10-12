@@ -1,9 +1,10 @@
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+from data.luces_data import cargar_luces, guardar_luces
 import uuid
-from src.services.luces import cargar_luces, guardar_luces
 import datetime
-
-luces = cargar_luces()
-
 
 def listar_luces(luces):
     if not luces:
@@ -12,6 +13,7 @@ def listar_luces(luces):
     print("Luces registradas:")
     for luz in luces:
         print(f"{luz['nombre']} - Estado: {'Encendida' if luz['estado'] else 'Apagada'}")
+
 def buscar_luz(luces, nombre):
     for luz in luces:
         if luz['nombre'].lower() == nombre.lower():
@@ -40,19 +42,26 @@ def eliminar_luz(luces, nombre):
         return luces
     else:
         guardar_luces(luces_filtradas)
-    return luces_filtradas
+        return luces_filtradas
 
 def cambiar_estado(nombre, nuevo_estado):
+    luces = cargar_luces()
+    luz_encontrada = False
     for luz in luces:
         if luz['nombre'].lower() == nombre.lower():
             luz['estado'] = nuevo_estado
-            guardar_luces(luces)
+            luz_encontrada = True
             print(f"Estado de la luz '{nombre}' cambiado a {'Encendida' if nuevo_estado else 'Apagada'}.")
-            return
-    print(f"Luz '{nombre}' no encontrada.")
+            break
+    
+    if luz_encontrada:
+        guardar_luces(luces)
+    else:
+        print(f"Luz '{nombre}' no encontrada.")
 
 def automatizacion_por_horario(luces):
     ahora = datetime.datetime.now().time()
+    print(f"Hora actual: {ahora}")
 
      # Prender luz del frente a las 19:00Hs
     if ahora.hour == 19 and ahora.minute == 0:
@@ -66,12 +75,10 @@ def automatizacion_por_horario(luces):
      # Apaga todas las luces a las 23:00 excepto la del frente
     if ahora.hour == 23 and ahora.minute == 0:
         cambio = False
-    for luz in luces:
-        if luz['estado'] and luz['nombre'].lower() != 'frente':
-            luz['estado'] = False
-            cambio = True
-            if cambio:
-                print("Todas las luces (excepto la del frente') fueron apagadas automáticamente a las 23:00.")
-                guardar_luces(luces)
-
-   
+        for luz in luces:
+            if luz['estado'] and luz['nombre'].lower() != 'frente':
+               luz['estado'] = False
+               cambio = True
+        if cambio:
+            print("Todas las luces (excepto la del frente') fueron apagadas automáticamente a las 23:00.")
+            guardar_luces(luces)

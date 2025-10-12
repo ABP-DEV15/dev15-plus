@@ -1,11 +1,17 @@
-from datausers import *
-from services.luces import cargar_luces
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+
+from data.users import USUARIOS, buscar_usuario, insertar_usuarios, modificar_usuario, mostrar_datos_personales
+from data.luces_data import cargar_luces
+from services.gestion_dispositivos import listar_luces, automatizacion_por_horario
+
 
 def inicio_sesion():
     data = {}
     usuario = input('Ingrese su usuario: ')
     data['usuario'] = usuario
-    password = input('Ingrese su credencial de acceso: ')
+    password = input('Ingrese su contraseña de acceso: ')
     data['password'] = password
     return buscar_usuario(data)
 
@@ -17,9 +23,12 @@ def registro():
     data['password'] = password
     dni = input('Ingrese su DNI: ')
     data['dni'] = dni
-    insertar_usuarios(data, USUARIOS)
-    print('Use su nuevo usuario')
-    return buscar_usuario(data)
+    
+    if insertar_usuarios(data, USUARIOS):
+        print('Usuario creado. Use sus credenciales para ingresar.')
+        return buscar_usuario(data)
+    else:
+        return False, "Error al registrar usuario"
 
 def view_main(usuario):
     if usuario['rol'] == 'regular':
@@ -29,7 +38,7 @@ def view_main(usuario):
         while True:
             hacer = input(
                 "\n¿Qué desea hacer?:\n"
-                "1. Consultar automatizaciones\n"
+                "1. Consultar estado de luces\n"
                 "2. Automatizar dispositivo (modo ahorro)\n"
                 "3. Modificar rol de usuario\n"
                 "4. Salir\n"
@@ -45,8 +54,18 @@ def view_main(usuario):
                     automatizacion_por_horario(luces)
 
                 case '3':
-                    email = input('Email del usuario a modificar: ')
-                    modificar_usuario(email)  
+                    usuario_modificar = input('Ingrese usuario a modificar: ')
+                    nuevo_rol = input('Nuevo rol (admin/regular): ')
+                    
+                    resultado = modificar_usuario({
+                        'usuario': usuario_modificar,
+                        'rol': nuevo_rol
+                    })
+                    
+                    if resultado:
+                        print(f"Rol de {usuario_modificar} cambiado a {nuevo_rol}")
+                    else:
+                        print("Error al modificar el usuario")
 
                 case '4':
                     break
@@ -55,7 +74,6 @@ def view_main(usuario):
                     print("Opción inválida.")
     else:
         print("Rol no reconocido.")
-
 
 def main():
     opcion = input("Bienvenido. Si tiene usuario escriba 1. Para registrarse escriba 2: ")
