@@ -12,7 +12,7 @@ class UsuarioDAO(DataAccessDAO):
         with self.dbconn as conn:
             try:
                 cursor = conn.cursor()
-                query = f"SELECT usuario, contrasena, dni, rol FROM {self.database}.usuarios WHERE id_usuario = %s"
+                query = f"SELECT usuario, contrasena, dni, rol FROM {self.database}.usuarios WHERE usuario = %s"
                 cursor.execute(query, (id,))
                 row = cursor.fetchone()
                 if row:
@@ -65,3 +65,28 @@ class UsuarioDAO(DataAccessDAO):
             except mysql.connector.Error as err:
                 raise err
 
+    def validar_contraseña(self, usuario, contraseña):
+        with self.dbconn as conn:
+            try:
+                cursor = conn.cursor()
+                query = f"SELECT contrasena FROM {self.database}.usuarios WHERE usuario = %s"
+                cursor.execute(query, (usuario,))
+                row = cursor.fetchone()
+                if row and row[0] == contraseña:
+                    return True
+                return False
+            except mysql.connector.Error as err:
+                raise err
+            
+    def get_id_by_username(self, username):
+        with self.dbconn as conn:
+            try:
+                cursor = conn.cursor()
+                query = f"SELECT id_usuario FROM {self.database}.usuarios WHERE usuario = %s"
+                cursor.execute(query, (username,))
+                row = cursor.fetchone()
+                if row:
+                    return row[0]
+                return None
+            except mysql.connector.Error as err:
+                raise err

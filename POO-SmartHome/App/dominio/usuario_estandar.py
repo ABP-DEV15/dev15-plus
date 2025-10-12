@@ -1,4 +1,4 @@
-from clases_base.usuarios import Usuario
+from dominio.clases_base.usuarios import Usuario
 
 class UsuarioEstandar(Usuario):
     def __init__(self, usuario, contraseña, dni):

@@ -1,4 +1,4 @@
-from clases_base.dispositivo import Dispositivo
+from dominio.clases_base.dispositivo import Dispositivo
 
 class Luces(Dispositivo):
     def __init__(self, nombre, intensidad=0):
@@ -11,7 +11,4 @@ class Luces(Dispositivo):
 
     @intensidad.setter
     def intensidad(self, valor):
-        if 0 <= valor <= 10:
             self._intensidad = valor
-        else:
-            raise ValueError("La intensidad debe estar entre 0 y 10.")
