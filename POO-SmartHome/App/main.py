@@ -61,7 +61,7 @@ class Main:
         id_usuario = usuario_dao.get_id_by_username(admin.usuario)
         vivienda = self.obtener_viviendas_usuario(id_usuario)
         print(f"Usted tiene acceso a la vivienda en {vivienda.calle} {vivienda.altura}, {vivienda.ciudad}")
-        print("1.gestionar dispositivos")
+        print("1.Gestionar dispositivos")
         print("2. Modificar Rol de usuario")
         input_opcion = input("Seleccione una opción: ")
         if input_opcion == "1":
@@ -119,9 +119,24 @@ class Main:
                     print("Luz no encontrada.")
                 self.menu_admin(usuario)
         if input_opcion == "2":
-            print("Funcionalidad no implementada.")
-            self.menu_admin(usuario)
-            
+            usuario_dao = UsuarioDAO(DBConn('config.ini'))
+            usuario_a_modificar = input("Ingrese el nombre de usuario al que desea modificar el rol: ")
+            usuario_mod = usuario_dao.get(usuario_a_modificar)
+            if usuario_mod:
+                print(f"El rol actual de {usuario_mod.usuario} es {usuario_mod.rol}")
+                nuevo_rol = input("Ingrese el nuevo rol (estandar/admin): ")
+                if nuevo_rol in ['estandar', 'admin']:
+                    usuario_dao = UsuarioDAO(DBConn('config.ini'))
+                    usuario_mod.rol = nuevo_rol
+                    usuario_dao.update(usuario_mod)
+                    print("Rol actualizado exitosamente.")
+                    self.menu_admin(usuario)
+                else:
+                    print("Rol inválido. Debe ser 'estandar' o 'admin'.")
+                    self.menu_admin(usuario)
+            else:
+                print("Usuario no encontrado.")
+
     def manejar_login(self, opcion):
         match opcion:
             case "1":
@@ -129,6 +144,13 @@ class Main:
                 if inicio.rol == 'estandar':
                     self.menu_estandar(inicio)
                 self.menu_admin(inicio)
+            case "2":
+                usuario_dao = UsuarioDAO(DBConn('config.ini'))
+                nuevo_usuario = input("Ingrese el nombre de usuario: ")
+                nueva_contraseña = input("Ingrese la contraseña: ")
+                nuevo_dni = input("Ingrese el DNI: ")
+                usuario = Usuario(nuevo_usuario, nueva_contraseña, nuevo_dni, 'estandar')
+                usuario_dao.create(usuario)
 
 view = Main()
 
