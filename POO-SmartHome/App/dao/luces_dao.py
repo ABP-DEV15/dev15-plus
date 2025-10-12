@@ -1,3 +1,4 @@
+import mysql.connector
 from conn.dbconn import DBConn
 from interface.data_access_dao import DataAccessDAO
 from dominio.luces import Luces
