@@ -13,7 +13,6 @@ Este repositorio contiene los scripts SQL para la base de datos del sistema Smar
 ### Pasos para ejecutar:
 1.  Abrir directamente OneCompiler con el dml y dll ya cargado:
     [https://onecompiler.com/mysql/43zfcv9he]
-# =============================================
 
 1. ** O Abrir OneCompiler MySQL**
    Ve a: [https://onecompiler.com/mysql/](https://onecompiler.com/mysql/)
@@ -34,44 +33,42 @@ Este repositorio contiene los scripts SQL para la base de datos del sistema Smar
 
     Las consultas SELECT al final mostrarán los datos insertados
 
-5. **Consultas incluidas en el DML**
-# =============================================
-# CONSULTAS SIMPLES
-# =================
+**Consultas incluidas en el DML**
 
-# Ver todos los usuarios
+## CONSULTAS SIMPLES
+
+
+**Ver todos los usuarios**
 SELECT * FROM usuarios;
 
-# Ver todas las viviendas
+**Ver todas las viviendas**
 SELECT * FROM viviendas;
 
-# Ver todas las luces
+**Ver todas las luces**
 SELECT * FROM luces;
 
-# Ver la relacion usuarios_viviendas
+**Ver la relacion usuarios_viviendas**
 SELECT * FROM usuarios_viviendas;
 
 
-# CONSULTAS MULTITABLAS
-# =====================
+## CONSULTAS MULTITABLAS
 
-# 1 Consulta Multitabla: Usuarios con acceso a viviendas
+**1 Consulta Multitabla: Usuarios con acceso a viviendas**
 
-# 2 Consulta Multitabla: Inventario de luces por vivienda
+**2 Consulta Multitabla: Inventario de luces por vivienda**
 
-# 3 Consulta Multitabla: Consumo energético por vivienda
+**3 Consulta Multitabla: Consumo energético por vivienda**
 
-# 4 Consulta Multitabla: Estado de luces por ciudad
+**4 Consulta Multitabla: Estado de luces por ciudad**
 
-# SUBCONSULTAS
-# =============
+## SUBCONSULTAS
 
-# 1 SubConsulta: Viviendas con más luces que el promedio
+**1 SubConsulta: Viviendas con más luces que el promedio**
 
-# 2 SubConsulta: Usuarios con acceso a múltiples ciudades  
+**2 SubConsulta: Usuarios con acceso a múltiples ciudades**
 
 
-5. **Estructura de Base de Datos**
+## Estructura de Base de Datos
 
     A- usuarios - Usuarios del sistema (admin y estándar)
 
@@ -81,4 +78,4 @@ SELECT * FROM usuarios_viviendas;
 
     D- usuarios_viviendas - Relación muchos-a-muchos entre usuarios y viviendas
 
-6. **DBMS utilizado: MySQL 8.0 ( compatible con OneCompiler)**
+**DBMS utilizado: MySQL 8.0 ( compatible con OneCompiler)**
