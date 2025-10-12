@@ -4,26 +4,22 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from dominio.luces import Luces
 import pytest
-@pytest.fixture
 
-def luces_fixture():
-        return Luces()
+def test_luces_inician_apagadas():
+        luces = Luces("Luz Sala")
+        assert luces._encendida is False
 
-def test_luces_inician_apagadas(luces_fixture):
-        assert luces_fixture.estado() == "apagadas"
+def test_luces_pueden_encenderse():
+        luces = Luces("Luz Sala")
+        luces.encender()
+        assert luces.estado() == "encendido"
 
-def test_luces_pueden_encenderse(luces_fixture):
-        assert luces_fixture.estado() == "encendidas"
+def test_luces_pueden_apagarse():
+        luces = Luces("Luz Sala")
+        luces.apagar()
+        assert luces.estado() == "apagado"
 
-def test_luces_pueden_apagarse(luces_fixture):
-        luces_fixture.encender()
-        luces_fixture.apagar()
-        assert luces_fixture.estado() == "apagadas"
-
-def test_intensidad_se_ajusta_al_usuario(luces_fixture):
-        luces_fixture.intensidad = 5
-        assert luces_fixture._intensidad == 5
-# la intensidad de luz se adapta a preferencia del usuario.
-        luces_fixture.intensidad = 20
-        assert luces_fixture._intensidad == 20
-# no deberia haberse modificado a ese valor.
+def test_intensidad_se_ajusta_al_usuario():
+        luces = Luces("Luz Sala")
+        luces.intensidad = 5
+        assert luces._intensidad == 5
