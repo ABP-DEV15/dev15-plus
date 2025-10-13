@@ -4,7 +4,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 from data.users import USUARIOS, buscar_usuario, insertar_usuarios, modificar_usuario, mostrar_datos_personales
 from data.luces_data import cargar_luces
-from services.gestion_dispositivos import listar_luces, automatizacion_por_horario
+from services.gestion_dispositivos import listar_luces, automatizacion_por_horario, cambiar_estado
+
 
 
 def inicio_sesion():
@@ -33,7 +34,26 @@ def registro():
 def view_main(usuario):
     if usuario['rol'] == 'regular':
         mostrar_datos_personales(usuario)
-
+        while True:
+            hacer = input(
+                "\n¿Qué desea hacer?:\n"
+                "1. Consultar estado de luces\n"
+                "2. Encerder/Apagar luz\n"
+                "3. Salir\n")
+            match hacer:
+                case '1':
+                    luces = cargar_luces()
+                    listar_luces(luces)
+                case '2':
+                    luces = cargar_luces()
+                    listar_luces(luces)
+                    luz_nombre = input("Ingrese el nombre de la luz a modificar: ")
+                    estado_input = input("Ingrese el estado (1 para encender, 0 para apagar): ")
+                    nuevo_estado = estado_input == "1"
+                    cambiar_estado(luz_nombre, nuevo_estado)
+                case '3':
+                    print("Saliendo...")
+                    break
     elif usuario['rol'] == 'admin':
         while True:
             hacer = input(
@@ -41,7 +61,8 @@ def view_main(usuario):
                 "1. Consultar estado de luces\n"
                 "2. Automatizar dispositivo (modo ahorro)\n"
                 "3. Modificar rol de usuario\n"
-                "4. Salir\n"
+                "4. Encender/Apagar luz\n"
+                "5. Salir\n"
                 "Seleccione una opción: "
             )
             match hacer:
@@ -67,8 +88,14 @@ def view_main(usuario):
                         print(f"Rol de {usuario_modificar} cambiado a {nuevo_rol}")
                     else:
                         print("Error al modificar el usuario")
-
-                case '4':
+                case '4': 
+                        luces = cargar_luces()
+                        listar_luces(luces)
+                        luz_nombre = input("Ingrese el nombre de la luz a modificar: ")
+                        estado_input = input("Ingrese el estado (1 para encender, 0 para apagar): ")
+                        nuevo_estado = estado_input == "1"
+                        cambiar_estado(luz_nombre, nuevo_estado)
+                case '5':
                     break
 
                 case _:
