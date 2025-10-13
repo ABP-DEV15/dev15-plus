@@ -52,6 +52,7 @@ def view_main(usuario):
                 case '2':
                     luces = cargar_luces()
                     automatizacion_por_horario(luces)
+                    print(f"Se activo el Modo ahorro energia, a las 19hs se encendera la luz Frente y a las 23hs se apagaran todas las luces menos la luz Frente")
 
                 case '3':
                     usuario_modificar = input('Ingrese usuario a modificar: ')
@@ -76,20 +77,26 @@ def view_main(usuario):
         print("Rol no reconocido.")
 
 def main():
-    opcion = input("Bienvenido. Si tiene usuario escriba 1. Para registrarse escriba 2: ")
-    match opcion:
-        case '1':
-            exito, usuario = inicio_sesion()
-            if exito:
-                view_main(usuario)
-            else:
-                print(usuario) 
-        case '2':
-            exito, usuario = registro()
-            if exito:
-                view_main(usuario)
-        case _:
-            print('Por favor, ingrese una opción válida')
+    while True:
+        opcion = input("Bienvenido. Si tiene usuario escriba 1. Para registrarse escriba 2. Para salir escriba 3: ")
+        match opcion:
+            case '1':
+                exito, usuario = inicio_sesion()
+                if exito:
+                    view_main(usuario)
+                else:
+                    print(usuario)
+            case '2':
+                exito, usuario = registro()
+                if exito:
+                    print("\n Registro exitoso. Ahora inicie sesión.\n")
+                else:
+                    print(usuario)
+            case '3':
+                print("Saliendo del sistema...")
+                break
+            case _:
+                print('Por favor, ingrese una opción válida')
 
 if __name__ == "__main__":
     main()

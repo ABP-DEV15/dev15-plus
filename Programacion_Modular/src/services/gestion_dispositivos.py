@@ -61,6 +61,7 @@ def cambiar_estado(nombre, nuevo_estado):
 
 def automatizacion_por_horario(luces):
     ahora = datetime.datetime.now().time()
+    print()
     print(f"Hora actual: {ahora}")
 
      # Prender luz del frente a las 19:00Hs
