@@ -1,64 +1,72 @@
 
-```
-    │──BD-EVIDENCIA-5  # Scripts SQL
-    │    │   ├── Readme.md # Explicacion de como ejecutar los Scripts
-    │    │   ├── smartHome_DLL.sql # DLL de las tablas Viviendas, Usuarios, Luces y Usuarios_Viviendas
-    │    │   └── SmartHome_DML.sql # DML para insertar datos y realizar consultas.
-    │
-    │──DC-EVIDENCIA-5  # Diagrama de clases
-    │    │   ├── Diagrama de Clases
-    │    │   ├── fundamentos POO del diagrama de clases
-    │
-    │──POO-SmartHome/ # código POO + TDD (Ev5)
-        ─App
-           │   config.ini
-           │   Poo.pdf
-           │
-           ├───conn
-           │   │   
-           │   └───dbconn.py
-           │   
-           │
-           ├───dao
-           │   │   luces_dao.py
-           │   │   usuario_dao.py
-           │   │   vivienda_dao.py
-           │
-           ├───dominio
-           │   │   dispositivo.py
-           │   │   luces.py
-           │   │   usuarios.py
-           │   │   vivienda.py
-           │
-           ├───interface
-           │   │   data_access_dao.py
-           │
-           ├───test
-              │   luces_controlador_test.py
-              │   luces_test.py
-              │   usuarios_test.py
-              │   usuario_controlador_test.py
-              │   vivienda_test.py
-               └── README.md
-    │
-    │──Programacion_Modular # Evidencia-3
-      │     ├── src/                      # código fuente (Ev2 y Ev3)
-      │     ├── data/  
-      │     │      ├── luces_data.py
-      │     │      ├── user.py
-      │     ├── services/
-      │            ├── gestion_dispositivos.py
-      │           
-      ├── main.py  # Gestion de usuarios
-      ├── menu_luces.py  # Gestion del Menu Principal de Luces
-      │
-      ├── docs/   # toda la documentación (Ev2 y Ev3)
-      │   ├── ev2y3/   # documentos de la Evidencia 3
-      │   │   ├── ev2_automatizacion.pdf
-      │   │   ├── Diagrama_entidad_relacion.sgv
-      │   │   ├── ev3_modelo_relacional.pdf
-      │   │   ├── ev3_informe_eticaymanual_etico.pdf
-      │       
-      └── README.md
+# SmartHome- Luces Inteligentes
+
+Sistema de Gestion de Luces inteligentes que permite administrar luces, usuarios y viviendas, aplicando los principios POO, arquitectura modular y acceso a base de datos mediante DAO.
+
+## Objetivos
+Registro de inicio de sesion de usuarios(Administradores y estandar)
+Registrar, consultar y administrar Luces.
+Conectar a una Base de datos MySQL para persistencia de datos.
+Automatizacion inicial Modo ahorro de energia.
+## Estructura de directorios
 
 ```
+SmartHome/
+│
+├── BD-Evidencia-5/        # Scripts SQL (DDL y DML)
+├── BD-Evidencia-6/        # Consultas multitabla y subconsultas
+├── DC-Evidencia-5/        # Diagrama de clases y documentación POO
+├── POO-SmartHome/         # Implementación POO + DAO + main.py
+│   ├── App/
+│   │   ├── conn/          # Conexión a BD
+│   │   ├── dao/           # Clases DAO
+│   │   ├── dominio/       # Clases de dominio (POO)
+│   │   ├── interface/     # DAO Interface
+│   │   ├── test/          # Pruebas unitarias
+│   │   └── main.py        # Punto de entrada
+│   └── config.ini         # Configuración BD
+└── Programacion_Modular/  # Versión inicial modular (Evidencias 2-3)
+```
+## Tech Stack
+
+- **Backend:** Python
+- **Database:** SQL (DDL, DML, consultas multitabla)
+- **Architecture:** POO, DAO Pattern, Programación Modular
+- **Tools:** Diagramas de clases, Configuración INI
+- **Testing:** Pruebas unitarias
+## Authors
+
+- [dev15-plus](https://github.com/ABP-DEV15/dev15-plus)
+
+### **Desarrolladores:**
+- **Fabricio Nicolas Rivarola**
+- **Pablo Emiliano Gatica**
+- **Maria Pia Pereyra Tauil**
+- **Alejandro Lucas Cortez**
+## Ejecutar localmente
+
+Clonar el proyecto
+
+```bash
+  git clone https://github.com/ABP-DEV15/dev15-plus
+```
+
+Ir al directorio del proyecto
+
+```bash
+  cd POO-SmartHome/App
+```
+
+Ejecutar el programa
+
+```bash
+  python main.py
+```
+
+
+## Estado del Proyecto
+Evidencias completadas: 2, 3, 5 y 6
+
+Pruebas unitarias: todas en verde
+
+Revisión ética y técnica: cumplida
