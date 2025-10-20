@@ -1,43 +1,43 @@
 class Vivienda:
     def __init__(self, id_vivienda, ciudad, calle, altura, luces=[]):
-        self._id_vivienda = id_vivienda
-        self._ciudad = ciudad
-        self._calle = calle
-        self._altura = altura
-        self._luces = []
+        self.__id_vivienda = id_vivienda
+        self.__ciudad = ciudad
+        self.__calle = calle
+        self.__altura = altura
+        self.__luces = []
         
 
     @property
     def calle(self):
-        return self._calle
+        return self.__calle
     @calle.setter
     def calle(self, nueva_calle):
-        self._calle = nueva_calle
+        self.__calle = nueva_calle
     @property
     def altura(self):
-        return self._altura
+        return self.__altura
     @altura.setter
     def altura(self, nueva_altura):
-        self._altura = nueva_altura
+        self.__altura = nueva_altura
     @property
     def ciudad(self):
-        return self._ciudad
+        return self.__ciudad
     @ciudad.setter
     def ciudad(self, nueva_ciudad):
-        self._ciudad = nueva_ciudad
+        self.__ciudad = nueva_ciudad
     @property
     def id_vivienda(self):
-        return self._id_vivienda
+        return self.__id_vivienda
     @id_vivienda.setter
     def id_vivienda(self, nuevo_id):
-        self._id_vivienda = nuevo_id
+        self.__id_vivienda = nuevo_id
     @property
     def luces(self):
-        return self._luces
+        return self.__luces
     @luces.setter
     def luces(self, nuevas_luces):
-        self._luces = nuevas_luces    
+        self.__luces = nuevas_luces    
 
     def _listar_luces(self):
-        for luz in self._luces:
+        for luz in self.__luces:
             print(luz)       

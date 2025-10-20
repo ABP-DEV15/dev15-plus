@@ -38,7 +38,7 @@ class Main:
         print("2. Cerrar sesión")
         input_opcion = input("Seleccione una opción: ")
         if input_opcion == "1":
-            print(estandar.consultar_datos())
+            print(estandar.llamar_datos())
             self.menu_estandar(usuario)
         if input_opcion == "2":
             self.menu()
@@ -63,6 +63,7 @@ class Main:
         print(f"Usted tiene acceso a la vivienda en {vivienda.calle} {vivienda.altura}, {vivienda.ciudad}")
         print("1. Gestionar dispositivos")
         print("2. Modificar Rol de usuario")
+        print("3. Salir")
         input_opcion = input("Seleccione una opción: ")
         if input_opcion == "1":
             luces_dao = LucesDAO(DBConn('config.ini'))
@@ -84,6 +85,7 @@ class Main:
             if input_opcion == "2":
                 for luz in vivienda.luces:
                     print(f"Luz: {luz.nombre}, Intensidad: {luz.intensidad}")
+                self.menu_admin(usuario)
             if input_opcion == "3":
                 nombre_luz = input("Ingrese el nombre de la luz: ")
                 intensidad = input("Ingrese la intensidad de la luz: ")
@@ -136,6 +138,9 @@ class Main:
                     self.menu_admin(usuario)
             else:
                 print("Usuario no encontrado.")
+        if input_opcion == "3":
+            print("Saliendo...")
+            return
 
     def manejar_login(self, opcion):
         match opcion:
@@ -147,10 +152,21 @@ class Main:
             case "2":
                 usuario_dao = UsuarioDAO(DBConn('config.ini'))
                 nuevo_usuario = input("Ingrese el nombre de usuario: ")
+                
+                if usuario_dao.check_duplicate(nuevo_usuario):
+                    print("El usuario ya existe ingrese otro")
+                    self.manejar_login(self.menu())
+                
                 nueva_contraseña = input("Ingrese la contraseña: ")
                 nuevo_dni = input("Ingrese el DNI: ")
+                if len(nuevo_dni) > 8:
+                    print("El Dni es demasiado largo")
+                    self.manejar_login(self.menu())
+
                 usuario = Usuario(nuevo_usuario, nueva_contraseña, nuevo_dni, 'estandar')
+                usuario_dao = UsuarioDAO(DBConn('config.ini'))
                 usuario_dao.create(usuario)
+                self.manejar_login(self.menu())
             case "3":
                 print("Saliendo...")
                 return

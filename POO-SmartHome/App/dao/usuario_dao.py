@@ -16,6 +16,7 @@ class UsuarioDAO(DataAccessDAO):
                 cursor.execute(query, (id,))
                 row = cursor.fetchone()
                 if row:
+                    conn.close()
                     return Usuario(row[0], row[1], row[2], row[3])
                 return None
             except mysql.connector.Error as err:
@@ -85,8 +86,23 @@ class UsuarioDAO(DataAccessDAO):
                 query = f"SELECT id_usuario FROM {self.database}.usuarios WHERE usuario = %s"
                 cursor.execute(query, (username,))
                 row = cursor.fetchone()
+                
                 if row:
                     return row[0]
                 return None
+            except mysql.connector.Error as err:
+                raise err
+            
+    def check_duplicate(self, usuario):
+        with self.dbconn as conn:
+            try:
+                cursor = conn.cursor()
+                query = f"select usuario from {self.database}.usuarios where usuario = %s"       
+                cursor.execute(query,(usuario,))
+                row = cursor.fetchone()
+                if row:
+                    print(row)
+                    return True
+                return False
             except mysql.connector.Error as err:
                 raise err

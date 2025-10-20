@@ -33,7 +33,7 @@ class DBConn:
                 print(err)
             return None
         
-db = DBConn()
+"""db = DBConn()
 conexion = db.conectar_a_mysql()
 
 if conexion:
@@ -42,7 +42,7 @@ if conexion:
     resultados = cursor.fetchall()
 
     for fila in resultados:
-        print(fila)
+       print(fila)
 
     cursor.close()
-    conexion.close()
+    conexion.close()"""
