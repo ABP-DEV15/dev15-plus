@@ -32,3 +32,17 @@ class DBConn:
             else:
                 print(err)
             return None
+        
+db = DBConn()
+conexion = db.conectar_a_mysql()
+
+if conexion:
+    cursor = conexion.cursor()
+    cursor.execute("SELECT * FROM usuarios")
+    resultados = cursor.fetchall()
+
+    for fila in resultados:
+        print(fila)
+
+    cursor.close()
+    conexion.close()
